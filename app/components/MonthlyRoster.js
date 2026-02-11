@@ -41,6 +41,28 @@ export default function MonthlyRoster() {
 
     const [holidays, setHolidays] = useState(new Set());
     const [closedDays, setClosedDays] = useState(new Set());
+    const [nationalHolidays, setNationalHolidays] = useState({});
+
+    // Fetch Japanese national holidays from API
+    useEffect(() => {
+        fetch('https://holidays-jp.github.io/api/v1/date.json')
+            .then(res => res.json())
+            .then(data => setNationalHolidays(data))
+            .catch(err => console.warn('祝日API取得失敗:', err));
+    }, []);
+
+    // Auto-set national holidays for current month
+    useEffect(() => {
+        if (Object.keys(nationalHolidays).length === 0) return;
+        const newHolidays = new Set(holidays);
+        daysArray.forEach(d => {
+            const dateStr = makeDateStr(d);
+            if (nationalHolidays[dateStr]) {
+                newHolidays.add(dateStr);
+            }
+        });
+        setHolidays(newHolidays);
+    }, [year, month, nationalHolidays]);
 
     useEffect(() => {
         const savedHolidays = localStorage.getItem('shift_holidays');
@@ -56,6 +78,9 @@ export default function MonthlyRoster() {
     useEffect(() => {
         localStorage.setItem('shift_closed', JSON.stringify([...closedDays]));
     }, [closedDays]);
+
+    const isNationalHoliday = (dateStr) => !!nationalHolidays[dateStr];
+    const getHolidayName = (dateStr) => nationalHolidays[dateStr] || '';
 
     const toggleDayStatus = (dateStr) => {
         const newHolidays = new Set(holidays);
@@ -170,12 +195,18 @@ export default function MonthlyRoster() {
                                     else if (dayOfWeek === 'Sat') color = 'blue';
                                 }
 
+                                const holidayName = getHolidayName(dateStr);
+                                const titleText = isClosed ? '店休日 (タップで解除)'
+                                    : isHoli && holidayName ? `${holidayName} (タップで店休に切替)`
+                                        : isHoli ? '祝日 (タップで店休に切替)'
+                                            : 'タップで切替: 通常→祝日→店休';
+
                                 return (
                                     <th
                                         key={d}
                                         style={{ color, backgroundColor: bg, cursor: 'pointer' }}
                                         onClick={() => toggleDayStatus(dateStr)}
-                                        title="タップで切替: 通常→祝日→店休"
+                                        title={titleText}
                                     >
                                         <div className="roster-date-header">{d}</div>
                                         <div className="roster-day-header">{WEEKDAYS_JP[dayOfWeek]}</div>
