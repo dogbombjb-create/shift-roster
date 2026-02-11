@@ -292,7 +292,7 @@ a {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
   .roster-controls,
@@ -302,11 +302,11 @@ a {
   }
 
   .roster-month-nav {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 
   .roster-title {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 
   /* Remove scroll constraints */
@@ -321,65 +321,71 @@ a {
     margin: 0;
   }
 
-  /* Aggressive table sizing for paper */
+  /* Table sizing for paper */
   .roster-table {
     width: 100%;
     table-layout: fixed;
-    font-size: 6.5px;
+    font-size: 7px;
   }
 
   .roster-table th {
-    padding: 1px 0;
+    padding: 4px 0;
     min-width: 0;
     height: auto;
-    font-size: 6.5px;
+    font-size: 7px;
     word-break: keep-all;
+    vertical-align: middle;
   }
 
   .roster-table td {
     border: 1px solid #aaa;
-    padding: 0;
-    height: auto;
-    line-height: 1.4;
+    padding: 3px 0;
+    height: 22px;
+    line-height: 1.6;
+    vertical-align: middle;
   }
 
   .roster-date-header {
-    font-size: 7px;
-    line-height: 1;
+    font-size: 8px;
+    line-height: 1.2;
+    font-weight: bold;
   }
 
   .roster-day-header {
-    font-size: 5.5px;
-    line-height: 1;
+    font-size: 6px;
+    line-height: 1.2;
   }
 
   .roster-name-cell {
     position: static;
     border-right: 1px solid #999;
-    padding: 1px 2px;
-    font-size: 7px;
-    width: 20px;
+    padding: 3px 3px;
+    font-size: 9px;
+    width: 22px;
   }
 
   .roster-stat-th {
-    font-size: 5.5px;
+    font-size: 6px;
     min-width: 0;
-    padding: 1px 0;
+    padding: 2px 0;
   }
 
   .roster-stat-td {
-    font-size: 6.5px;
+    font-size: 8px;
+    font-weight: bold;
   }
 
   .roster-footer-cell {
-    font-size: 6.5px;
+    font-size: 8px;
+    font-weight: bold;
   }
 
   .roster-select {
     border: none;
     padding: 0;
     margin: 0;
-    font-size: 6.5px;
+    font-size: 8px;
+    font-weight: bold;
     width: 100%;
     text-align: center;
     -webkit-appearance: none;
