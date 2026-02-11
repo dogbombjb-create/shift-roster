@@ -290,20 +290,23 @@ a {
   .roster-header {
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 8px;
   }
 
   .roster-controls,
-  .roster-btn {
+  .roster-btn,
+  .roster-month-nav .roster-btn {
     display: none !important;
   }
 
   .roster-month-nav {
-    font-size: 1.4em;
+    font-size: 1em;
   }
 
   .roster-title {
-    font-size: 1.6em;
+    font-size: 1.2em;
   }
 
   /* Remove scroll constraints */
@@ -315,40 +318,85 @@ a {
 
   .roster-container {
     padding: 0;
+    margin: 0;
   }
 
-  /* Optimize table for paper */
+  /* Aggressive table sizing for paper */
   .roster-table {
     width: 100%;
-    font-size: 9px;
+    table-layout: fixed;
+    font-size: 6.5px;
   }
 
-  .roster-table th,
-  .roster-table td {
-    border: 1px solid #999;
-    padding: 2px 1px;
+  .roster-table th {
+    padding: 1px 0;
+    min-width: 0;
     height: auto;
+    font-size: 6.5px;
+    word-break: keep-all;
+  }
+
+  .roster-table td {
+    border: 1px solid #aaa;
+    padding: 0;
+    height: auto;
+    line-height: 1.4;
+  }
+
+  .roster-date-header {
+    font-size: 7px;
+    line-height: 1;
+  }
+
+  .roster-day-header {
+    font-size: 5.5px;
+    line-height: 1;
   }
 
   .roster-name-cell {
     position: static;
-    border-right: 2px solid #999;
+    border-right: 1px solid #999;
+    padding: 1px 2px;
+    font-size: 7px;
+    width: 20px;
+  }
+
+  .roster-stat-th {
+    font-size: 5.5px;
+    min-width: 0;
+    padding: 1px 0;
+  }
+
+  .roster-stat-td {
+    font-size: 6.5px;
+  }
+
+  .roster-footer-cell {
+    font-size: 6.5px;
   }
 
   .roster-select {
     border: none;
     padding: 0;
-    font-size: 9px;
-    width: auto;
+    margin: 0;
+    font-size: 6.5px;
+    width: 100%;
+    text-align: center;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background: transparent !important;
   }
 
+  .roster-warning {
+    width: 4px;
+    height: 4px;
+    margin: 0 auto;
+  }
+
   /* Page settings */
   @page {
-    size: landscape;
-    margin: 10mm;
+    size: A4 landscape;
+    margin: 5mm;
   }
 }
