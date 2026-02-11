@@ -138,6 +138,7 @@ export default function MonthlyRoster() {
                 <div className="roster-controls">
                     <button className="roster-btn" onClick={handleGenerate}>自動割当</button>
                     <button className="roster-btn roster-btn-dark" onClick={handleReset}>リセット</button>
+                    <button className="roster-btn roster-btn-print" onClick={() => window.print()}>🖨 印刷</button>
                 </div>
             </header>
 

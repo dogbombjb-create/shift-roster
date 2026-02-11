@@ -277,3 +277,78 @@ a {
     font-size: 0.7em;
   }
 }
+
+/* ===== Print Button ===== */
+.roster-btn-print {
+  background-color: #059669;
+}
+
+/* ===== Print Styles ===== */
+@media print {
+
+  /* Hide UI controls */
+  .roster-header {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .roster-controls,
+  .roster-btn {
+    display: none !important;
+  }
+
+  .roster-month-nav {
+    font-size: 1.4em;
+  }
+
+  .roster-title {
+    font-size: 1.6em;
+  }
+
+  /* Remove scroll constraints */
+  .roster-table-wrap {
+    overflow: visible;
+    max-height: none;
+    border: none;
+  }
+
+  .roster-container {
+    padding: 0;
+  }
+
+  /* Optimize table for paper */
+  .roster-table {
+    width: 100%;
+    font-size: 9px;
+  }
+
+  .roster-table th,
+  .roster-table td {
+    border: 1px solid #999;
+    padding: 2px 1px;
+    height: auto;
+  }
+
+  .roster-name-cell {
+    position: static;
+    border-right: 2px solid #999;
+  }
+
+  .roster-select {
+    border: none;
+    padding: 0;
+    font-size: 9px;
+    width: auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent !important;
+  }
+
+  /* Page settings */
+  @page {
+    size: landscape;
+    margin: 10mm;
+  }
+}
